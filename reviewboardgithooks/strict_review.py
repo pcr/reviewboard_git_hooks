@@ -235,6 +235,9 @@ def check_branch(name):
 
 def _main():
     debug('command:' + str(sys.argv))
+    if len(sys.argv) != 4:
+        raise GitError, 'Usage:\n  %s \{repository_path\} \{branch\} \{diff_file\}'%sys.argv[0]
+    
     repos_path = sys.argv[1]
     branch = sys.argv[2]
     diff_file = sys.argv[3]
