@@ -214,6 +214,8 @@ def check_review(opener, review_req):
     if pending_time != None and pending_time > begin_time:
         begin_time = pending_time
     
+    submitter = review_reqreview_req['links']['submitter']['title']
+    
     rsp = opener.open(review_req['links']['reviews']['href'], {})
     rsp_json = json.loads(rsp)
     if rsp_json['stat'] != 'ok':
@@ -223,7 +225,8 @@ def check_review(opener, review_req):
     for review in rsp_json['reviews']:
         ship_it = int(review['ship_it'])
         time = datetime.strptime(review['timestamp'], "%Y-%m-%dT%H:%M:%Sz")
-        if ship_it and time >= begin_time:
+        user = review['links']['user']['title']
+        if ship_it and time >= begin_time and user != submitter:
             ship_it_users.add(review['links']['user']['title'])
     
     if len(ship_it_users) < MIN_SHIP_IT_COUNT:
