@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load djblets_deco %}
+{% load rbstats_tags %}
+{% load i18n %}
+{% block title %}{% trans "Statistics" %}{% endblock %}
+
+{% block content %}
+{% box "reports" %}
+ <h1 class="title">{% trans "Review Board Statistics" %}</h1>
+ <div class="main">
+    <table>
+        <tbody>
+            <tr>
+                <td>Total Review Requests</td>
+                <td>{{total_review_requests}}</td>
+            </tr>
+            <tr>
+                <td>Total Reviews</td>
+                <td>{{total_reviews}}</td>
+            </tr>
+{%          for hook in table_hook_entries %}
+            <tr>
+                <td>{{hook|get_description}}</td>
+                <td>{{hook|get_value:user}}</td>
+            </tr>
+{%          endfor %}
+        </tbody>
+    </table>
+ </div>
+{% endbox %}
+{% endblock %}
