@@ -1,7 +1,7 @@
 from setuptools import setup
 
 
-PACKAGE = "sample_extension"
+PACKAGE = "sample"
 VERSION = "0.1"
 
 
@@ -10,9 +10,9 @@ setup(
     version=VERSION,
     description='Description of extension package.',
     author='Your Name',
-    packages=['sample_extension'],
+    packages=['sample'],
     entry_points={
         'reviewboard.extensions':
-            '%s = sample_extension.extension:SampleExtension' % PACKAGE,
+            '%s = sample.extension:SampleExtension' % PACKAGE,
     },
 )
