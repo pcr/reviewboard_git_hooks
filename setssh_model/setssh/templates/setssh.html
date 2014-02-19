@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="zh_cn">
+ <style> 
+	body{ margin:56px; } 
+ <meta charset="utf-8">
+</style>
+  <body>
+    <h2>配置ssh</h2>
+    <div align="left">
+      <form action="" method="POST" >
+      {% csrf_token %}
+        <label for="name">
+        	用户名 ( 建议邮箱 )：
+        </label>
+        {% if name_error %}
+        	 <label style="color:#f00">用户名不能为空！</label>
+        {%endif%}
+        <br>
+        <input type="text" name="name" value= '{{user.name}}' style="width:500px" >
+        </input>
+        <br>
+        <br>
+        <label for="name">
+        SSH:
+        </label>
+        {% if ssh_error %}
+        	 <label style="color:#f00">SSH不能为空！</label>
+        {%endif%}
+        <br>
+        <textarea type="text" name="ssh_rsa" align="left" style="height:200px;width:500px" >{{user.ssh_rsa}}</textarea>
+        <br>
+        <br>
+        <input type="submit" value="确认">
+      </form>
+    </div> 
+  </body>
+</html>
