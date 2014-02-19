@@ -1,4 +1,4 @@
-from reviewboard.extensions.packaging import setup
+from setuptools import setup
 
 
 PACKAGE = "sample_extension"
