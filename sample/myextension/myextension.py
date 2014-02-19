@@ -2,7 +2,7 @@ from reviewboard.extensions.base import Extension
 from reviewboard.extensions.hooks import NavigationBarHook
 
 
-class SampleExtension(Extension):
+class SampleExtension1(Extension):
     def initialize(self):
         NavigationBarHook(
             self,
